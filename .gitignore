@@ -1,0 +1,15 @@
+vendor/
+node_modules/
+package-lock.json
+/vendor/
+node_modules/
+npm-debug.log
+yarn-error.log
+storage/*.key
+.env
+Homestead.yaml
+Homestead.json
+/.vagrant
+.phpunit.result.cache
+**/.DS_Store
+.DS_Store

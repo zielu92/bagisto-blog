@@ -1,0 +1,38 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+    .temp-icon {
+        width: 48px;
+        height: 48px;
+        display: inline-block;
+        background-size: cover;
+        background-image: url("../images/icon-temp.svg");
+    }
+
+    .blog-icon {
+        width: 48px;
+        height: 48px;
+        display: inline-block;
+        background-size: cover;
+        background-image: url("../images/edit-document-icon.svg");
+    }
+
+
+    .active .temp-icon {
+        background-image: url("../images/icon-temp-active.svg");
+    }
+
+    .active .temp-icon:before {
+        background-image: url("../images/icon-temp-active.svg");
+    }
+
+    .active .blog-icon {
+        background-image: url('../images/edit-document-icon-active.svg');
+    }
+
+    .active .blog-icon:before {
+        background-image: url('../images/edit-document-icon-active.svg');
+    }
+}
