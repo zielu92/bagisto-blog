@@ -15,3 +15,6 @@ mkdir Mziel/Blog ``
 - Run commands
 ``composer dump-autoload
 php artisan optimize ``
+
+## Generate demo content
+use command ``php artisan blog:demo``
