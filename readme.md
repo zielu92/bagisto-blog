@@ -18,3 +18,7 @@ php artisan optimize ``
 
 ## Generate demo content
 use the command ``php artisan blog:demo``
+
+## Supported languages
+- English
+- Polish
