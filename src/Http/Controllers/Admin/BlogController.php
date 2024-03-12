@@ -55,10 +55,11 @@ class BlogController extends Controller
     public function store()
     {
         $this->validate(request(), [
-            'slug'      => ['required', 'unique:blog_translations,slug', new \Webkul\Core\Rules\Slug],
+            'slug'    => ['required', 'unique:blog_translations,slug', new \Webkul\Core\Rules\Slug],
             'title'   => 'required',
-            'channels'     => 'required',
+            'channels'=> 'required',
             'content' => 'required',
+            'status'  => 'nullable'
         ]);
 
         Event::dispatch('blog.create.before');
@@ -73,6 +74,7 @@ class BlogController extends Controller
             'slug',
             'meta_keywords',
             'meta_description',
+            'status',
         ]));
 
         Event::dispatch('blog.create.after', $page);

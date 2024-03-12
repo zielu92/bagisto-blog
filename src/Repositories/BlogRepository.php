@@ -35,7 +35,7 @@ class BlogRepository extends Repository
 
             $data[$locale->code]['content'] = str_replace('=&gt;', '=>', $data[$locale->code]['content']);
         }
-
+        $data['status'] = isset($data['status']) ? 1 : 0;
         $blog = parent::create($data);
         $this->photoUpload(request()->all(), $blog->id);
         $blog->channels()->sync($data['channels']);

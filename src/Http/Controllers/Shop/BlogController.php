@@ -23,7 +23,8 @@ class BlogController extends Controller
     {
         $locale =  app()->getLocale();
         $categories = BlogCategoryTranslation::where('locale', $locale)->get();
-        $blogs = BlogTranslation::where('locale', $locale)->paginate(30);
+        $active = Blog::select('id')->where('status', 1)->get()->pluck('id');
+        $blogs = BlogTranslation::where('locale', $locale)->whereIn('blog_id', $active)->paginate(4);
         return view('blog::shop.index', compact('categories', 'blogs'));
     }
 
@@ -37,6 +38,9 @@ class BlogController extends Controller
     {
         $blog = BlogTranslation::where('slug', $slug)->where('locale', app()->getLocale())->firstOrFail();
         $blogRaw = Blog::findOrFail($blog->blog_id);
+        if($blogRaw->status==0) {
+            abort(404);
+        }
         $nextBlog = null;
         if(Blog::where('id', '>', $blogRaw->id)->first()) {
             $nextBlog = Blog::where('id', '>', $blogRaw->id)->first()->translations->where('locale',app()->getLocale())->first()->slug;
